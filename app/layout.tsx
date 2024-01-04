@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
+import Navbar from './components/nav/Navbar'
+import Footer from './components/footer/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({ subsets: ['latin'], weight: ["700", "400"] })
 
 export const metadata: Metadata = {
   title: 'E-Commerce Shop',
@@ -16,7 +18,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${poppins.className} text-state-700`}>
+        <div className='flex flex-col min-h-screen'>
+          <Navbar/>
+          <main className='flex-grow'>
+            {children}
+          </main>
+          <Footer/>
+        </div>
+        
+      </body>
     </html>
   )
 }
